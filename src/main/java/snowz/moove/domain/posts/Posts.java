@@ -6,12 +6,12 @@ import lombok.NoArgsConstructor;
 import snowz.moove.domain.BaseTimeEntity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Getter
 @NoArgsConstructor
 @Entity
 public class Posts extends BaseTimeEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,10 +24,25 @@ public class Posts extends BaseTimeEntity {
 
     private String writer;
 
+    private Integer view;
+
+    private String location;
+
+//    private Date createdDate;
+//
+//    private Date modifiedDate;
+//
+    private Date deadlineDate;
+
     @Builder
-    public Posts(String title, String content, String writer){
+    public Posts(String title, String content, String writer, Integer view, String location, Date deadlineDate) {
         this.title = title;
         this.content = content;
         this.writer = writer;
+        this.view = view;
+        this.location = location;
+//        this.createdDate = createdDate;
+//        this.modifiedDate = modifiedDate;
+        this.deadlineDate = deadlineDate;
     }
 }
