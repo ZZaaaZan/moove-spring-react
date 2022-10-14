@@ -18,4 +18,9 @@ public class IndexController {
         }
         return "index";
     }
+
+    @GetMapping("/posts/write")
+    public String postsSave(){
+        return "posts-write";
+    }
 }
