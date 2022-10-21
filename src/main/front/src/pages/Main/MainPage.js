@@ -12,7 +12,7 @@ const MainPage = () => {
     <div className="course-goals">
       <Header />
       <MainList className={"main-page"} />
-      <Link to="/post/write">
+      <Link to="/posts/write">
         <button className="addBtn">+</button>
       </Link>
     </div>

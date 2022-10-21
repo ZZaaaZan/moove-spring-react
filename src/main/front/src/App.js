@@ -14,7 +14,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<MainPage />} />
                     <Route path="/detail" element={<DetailPage />} />
-                    <Route path="/post/write" element={<AddPostPage />}/>
+                    <Route path="/posts/write" element={<AddPostPage />}/>
                 </Routes>
             </div>
         </BrowserRouter>
