@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import axios from "axios";
 import "./AddPost.css";
+import Header from "../../components/Header/Header";
 
 function AddPostPage() {
   const [title, setTitle] = useState("");
@@ -49,6 +51,8 @@ function AddPostPage() {
 
   return (
     <div>
+      <Header/>
+      <div className="addPostContainer">
       <form onSubmit={saveHandler} className="addPost">
         <input
           type="text"
@@ -68,8 +72,10 @@ function AddPostPage() {
           onChange={writerHandler}
           placeholder="작성자를 입력하세요"
         />
-        <button type="submit">등록</button>
+        <Link to="/"><button type="submit">등록</button></Link>
+        
       </form>
+      </div>
     </div>
   );
 }
