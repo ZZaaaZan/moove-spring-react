@@ -4,14 +4,6 @@ import axios from 'axios';
 
 const MainList = () => {
 
-    const [hello, setHello] = useState('')
-
-    useEffect(() => {
-        axios.get('/api/hello')
-            .then(response => setHello(response.data))
-            .catch(error => console.log(error))
-    }, []);
-
     return (
         <div className="container">
             <div className="item">
