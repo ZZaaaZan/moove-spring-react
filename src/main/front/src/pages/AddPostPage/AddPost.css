@@ -1,0 +1,4 @@
+.addPost{
+    display: flex;
+    flex-direction: column;
+}

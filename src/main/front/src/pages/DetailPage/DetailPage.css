@@ -1,0 +1,7 @@
+.postContainer{
+    width: 530px;
+}
+.detailContainer{
+    display: flex;
+    justify-content: space-evenly;
+}
