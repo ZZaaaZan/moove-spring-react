@@ -9,11 +9,16 @@ import snowz.moove.web.dto.PostsSaveRequestDto;
 import snowz.moove.web.dto.PostsUpdateRequestDto;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
 public class PostsService {
     private final PostsRepository postsRepository;
+
+    public List<Posts> getAllPosts(){
+        return postsRepository.findAll();
+    }
 
     @Transactional
     public Long save(PostsSaveRequestDto requestDto){
