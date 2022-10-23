@@ -1,0 +1,35 @@
+
+.titleContainer {
+}
+
+.scrollContainer{
+}
+
+.PostMetaData {
+  display: flex;
+}
+
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.btnItem {
+  margin: 10px;
+}
+
+.sellerInfoContainer {
+  display: flex;
+}
+
+.profileImg {
+  margin: 0 8px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.nickName {
+  font-weight: bold;
+}

@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import snowz.moove.security.auth.LoginUser;
 import snowz.moove.security.auth.dto.SessionUser;
+import snowz.moove.domain.posts.Posts;
 import snowz.moove.service.posts.PostsService;
 import snowz.moove.web.dto.PostsResponseDto;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -25,8 +28,8 @@ public class IndexController {
     }
 
     @GetMapping("/posts/write")
-    public String postsSave(){
-        return "posts-write";
+    public List<Posts> postsSave(){
+        return postsService.getAllPosts();
     }
 
     @GetMapping("/posts/update/{id}")

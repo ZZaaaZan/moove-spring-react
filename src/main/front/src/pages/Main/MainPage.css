@@ -1,0 +1,14 @@
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+.addBtn{
+    background-color: black;
+    border: solid;
+    border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  color: aliceblue;
+}

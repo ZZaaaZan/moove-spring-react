@@ -1,0 +1,8 @@
+.addPost{
+    display: flex;
+    flex-direction: column;
+}
+
+.addPostContainer{
+    width: 752px;
+}
