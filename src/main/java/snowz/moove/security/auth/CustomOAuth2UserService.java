@@ -1,4 +1,4 @@
-package snowz.moove.config.auth;
+package snowz.moove.security.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -9,8 +9,8 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
-import snowz.moove.config.auth.dto.OAuthAttributes;
-import snowz.moove.config.auth.dto.SessionUser;
+import snowz.moove.security.auth.dto.OAuthAttributes;
+import snowz.moove.security.auth.dto.SessionUser;
 import snowz.moove.domain.user.User;
 import snowz.moove.domain.user.UserRepository;
 

@@ -1,4 +1,4 @@
-package snowz.moove.config.auth.dto;
+package snowz.moove.security.auth.dto;
 
 import lombok.Builder;
 import lombok.Getter;

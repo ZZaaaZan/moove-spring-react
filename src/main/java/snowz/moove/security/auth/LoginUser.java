@@ -1,4 +1,4 @@
-package snowz.moove.config.auth;
+package snowz.moove.security.auth;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import snowz.moove.config.auth.LoginUser;
-import snowz.moove.config.auth.dto.SessionUser;
+import snowz.moove.security.auth.LoginUser;
+import snowz.moove.security.auth.dto.SessionUser;
 import snowz.moove.service.posts.PostsService;
 import snowz.moove.web.dto.PostsResponseDto;
 

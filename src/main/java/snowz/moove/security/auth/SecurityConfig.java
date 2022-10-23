@@ -1,4 +1,4 @@
-package snowz.moove.config.auth;
+package snowz.moove.security.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,7 +14,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http
-                .csrf().disable()
+                .csrf().disable() // cors off
                 .headers().frameOptions().disable()
                 .and()
                 .authorizeRequests()
