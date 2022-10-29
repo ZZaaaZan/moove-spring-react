@@ -3,6 +3,7 @@ package snowz.moove.domain.posts;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import snowz.moove.domain.BaseTimeEntity;
 
 import javax.persistence.*;
@@ -28,10 +29,7 @@ public class Posts extends BaseTimeEntity {
 
     private String location;
 
-//    private Date createdDate;
-//
-//    private Date modifiedDate;
-//
+    @DateTimeFormat(pattern = "yyyy-MM-dd`T`HH:mm:ss")
     private Date deadlineDate;
 
     @Builder
@@ -41,8 +39,6 @@ public class Posts extends BaseTimeEntity {
         this.writer = writer;
         this.view = view;
         this.location = location;
-//        this.createdDate = createdDate;
-//        this.modifiedDate = modifiedDate;
         this.deadlineDate = deadlineDate;
     }
 
