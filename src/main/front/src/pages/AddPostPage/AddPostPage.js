@@ -59,18 +59,21 @@ function AddPostPage() {
           value={title}
           onChange={titleHandler}
           placeholder="제목"
+          className={"addPost-input"}
         />
         <textarea
           type="text"
           value={content}
           onChange={contentHandler}
           placeholder="내용을 입력하세요"
+          className={"contentArea"}
         ></textarea>
         <input
           type="text"
           value={writer}
           onChange={writerHandler}
           placeholder="작성자를 입력하세요"
+          className={"addPost-input"}
         />
         <button type="submit">등록</button>
         <Link to="/"></Link>
