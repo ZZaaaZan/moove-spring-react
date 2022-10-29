@@ -1,14 +1,14 @@
 import React from 'react';
 import NaverLogin from "../../components/NaverLogin";
-import GoogleLogin from "../../components/GoogleLogin";
-import KakaoLogin from "../../components/KakaoLogin";
+import KakaoLogin from '../../components/KakaoLogin';
+import GoogleLogIn from '../../components/GoogleLogin';
 
 function LoginPage(){
     return (
         <div className="App">
             <NaverLogin />
-            <GoogleLogin />
             <KakaoLogin />
+            <GoogleLogIn />
         </div>
     )
 }

@@ -39,7 +39,7 @@ function AddPostPage() {
     console.log("dkdkd");
     console.log(body);
     axios
-      .post("http://localhost:8080/api/posts", null, body)
+      .post("http://localhost:8080/api/posts", body)
       .then((res) => {
         console.log(res);
       })
@@ -72,7 +72,8 @@ function AddPostPage() {
           onChange={writerHandler}
           placeholder="작성자를 입력하세요"
         />
-        <Link to="/"><button type="submit">등록</button></Link>
+        <button type="submit">등록</button>
+        <Link to="/"></Link>
         
       </form>
       </div>

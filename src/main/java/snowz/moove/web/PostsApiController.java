@@ -12,6 +12,7 @@ import snowz.moove.web.dto.PostsUpdateRequestDto;
 public class PostsApiController {
     private final PostsService postsService;
 
+    //@CrossOrigin(origins = "http://localhost:8080, http://localhost:3000")
     @PostMapping("/api/posts")
     public Long save(@RequestBody PostsSaveRequestDto requestDto){
         return postsService.save(requestDto);
