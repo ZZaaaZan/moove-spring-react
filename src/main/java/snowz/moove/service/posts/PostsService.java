@@ -2,14 +2,16 @@ package snowz.moove.service.posts;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import snowz.moove.domain.posts.Posts;
 import snowz.moove.domain.posts.PostsRepository;
+import snowz.moove.web.dto.PostsListResponseDto;
 import snowz.moove.web.dto.PostsResponseDto;
 import snowz.moove.web.dto.PostsSaveRequestDto;
 import snowz.moove.web.dto.PostsUpdateRequestDto;
 
-import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -47,5 +49,10 @@ public class PostsService {
         Posts posts = postsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
         postsRepository.delete(posts);
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc(){
+        return postsRepository.findAllDesc().stream().map(PostsListResponseDto::new).collect(Collectors.toList());
     }
 }
