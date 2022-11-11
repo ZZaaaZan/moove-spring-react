@@ -9,6 +9,7 @@ import snowz.moove.util.CookieUtil;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+// Authorization request를 cookie에 저장하기 위한 클래스
 @Component
 public class CookieAuthorizationRequestRepository implements AuthorizationRequestRepository {
     public static final String OAUTH2_AUTHORIZATION_REQUEST_COOKIE_NAME = "oauth2_auth_request";
