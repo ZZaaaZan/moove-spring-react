@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.web.cors.CorsUtils;
 import snowz.moove.domain.user.Role;
 
@@ -15,22 +16,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http
-                .csrf().disable() // cors off
-                .headers().frameOptions().disable()
+                .cors()                     // CORS on
                 .and()
+
+                .csrf().disable()           // CSRF off
+                .httpBasic().disable()      // Basic Auth off
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Session off-
+                .and()
+
                 .authorizeRequests()
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**").permitAll()
                 .antMatchers("/api/**").hasRole(Role.USER.name())
                 .anyRequest().authenticated()
                 .and()
+
                 .logout()
                 .logoutSuccessUrl("/")
                 .and()
+
                 .oauth2Login()
                 .userInfoEndpoint()
                 .userService(customOAuth2UserService);
-
-
     }
 }
