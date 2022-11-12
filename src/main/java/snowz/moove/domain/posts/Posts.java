@@ -42,10 +42,9 @@ public class Posts extends BaseTimeEntity {
         this.deadlineDate = deadlineDate;
     }
 
-    public void update(String title, String content, Integer view, String location, Date deadlineDate){
+    public void update(String title, String content, String location, Date deadlineDate){
         this.title = title;
         this.content = content;
-        this.view = view;
         this.location = location;
         this.deadlineDate = deadlineDate;
     }

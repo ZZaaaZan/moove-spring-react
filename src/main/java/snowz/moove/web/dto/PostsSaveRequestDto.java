@@ -13,26 +13,15 @@ public class PostsSaveRequestDto {
     private String title;
     private String content;
     private String writer;
-
-    private Integer view;
-
     private String location;
-
-//    private Date createdDate;
-//
-//    private Date modifiedDate;
-//
     private Date deadlineDate;
 
     @Builder
-    public PostsSaveRequestDto(String title, String content, String writer, Integer view, String location, Date deadlineDate) {
+    public PostsSaveRequestDto(String title, String content, String writer, String location, Date deadlineDate) {
         this.title = title;
         this.content = content;
         this.writer = writer;
-        this.view = view;
         this.location = location;
-//        this.createdDate = createdDate;
-//        this.modifiedDate = modifiedDate;
         this.deadlineDate = deadlineDate;
     }
 
@@ -41,9 +30,7 @@ public class PostsSaveRequestDto {
                 .title(title)
                 .content(content)
                 .writer(writer)
-                .view(view)
-//                .createdDate(createdDate)
-//                .modifiedDate(modifiedDate)
+                .location(location)
                 .deadlineDate(deadlineDate)
                 .build();
     }

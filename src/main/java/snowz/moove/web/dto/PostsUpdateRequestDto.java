@@ -11,15 +11,13 @@ import java.util.Date;
 public class PostsUpdateRequestDto {
     private String title;
     private String content;
-    private Integer view;
     private String location;
     private Date deadlineDate;
 
     @Builder
-    public PostsUpdateRequestDto(String title, String content, Integer view, String location, Date deadlineDate){
+    public PostsUpdateRequestDto(String title, String content, String location, Date deadlineDate){
         this.title = title;
         this.content = content;
-        this.view = view;
         this.location = location;
         this.deadlineDate = deadlineDate;
     }

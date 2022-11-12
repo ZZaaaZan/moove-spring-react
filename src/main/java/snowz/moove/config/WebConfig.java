@@ -25,6 +25,8 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:3000") // localhost 3000 접근 허용  http://localhost:8080은 잠시 빼둠
+                //.allowedOrigins("http://localhost:3000, http://localhost:8080") // localhost 3000 접근 허용
+                .allowedOrigins("https://www.domain.net")
                 .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true)

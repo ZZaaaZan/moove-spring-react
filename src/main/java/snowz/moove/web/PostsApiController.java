@@ -1,6 +1,8 @@
 package snowz.moove.web;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import snowz.moove.service.posts.PostsService;
 import snowz.moove.web.dto.PostsResponseDto;
@@ -14,8 +16,9 @@ public class PostsApiController {
 
     //@CrossOrigin(origins = "http://localhost:8080, http://localhost:3000")
     @PostMapping("/api/posts")
-    public Long save(@RequestBody PostsSaveRequestDto requestDto){
-        return postsService.save(requestDto);
+    public ResponseEntity<PostsSaveRequestDto> save(@RequestBody PostsSaveRequestDto requestDto){
+        postsService.save(requestDto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/api/posts/{id}")
