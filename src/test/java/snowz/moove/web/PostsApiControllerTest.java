@@ -20,9 +20,11 @@ import snowz.moove.domain.posts.PostsRepository;
 import snowz.moove.web.dto.PostsSaveRequestDto;
 import snowz.moove.web.dto.PostsUpdateRequestDto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.InstanceOfAssertFactories.DATE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -69,6 +71,8 @@ public class PostsApiControllerTest {
                 .title(title)
                 .content(content)
                 .writer("writer")
+                .location("location")
+                .deadlineDate(LocalDateTime.now())
                 .build();
 
         String url = "http://localhost:" + port + "/api/posts";

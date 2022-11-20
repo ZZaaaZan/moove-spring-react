@@ -3,7 +3,7 @@ package snowz.moove.web.dto;
 import lombok.Getter;
 import snowz.moove.domain.posts.Posts;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 public class PostsResponseDto {
@@ -13,7 +13,7 @@ public class PostsResponseDto {
     private String writer;
     private Integer view;
     private String location;
-    private Date deadlineDate;
+    private LocalDateTime deadlineDate;
 
     public PostsResponseDto(Posts entity){
         this.id = entity.getId();

@@ -1,17 +1,19 @@
 package snowz.moove.domain.posts;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import snowz.moove.domain.BaseTimeEntity;
+import snowz.moove.domain.category.Category;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
-@Getter
-@NoArgsConstructor
 @Entity
+@Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class Posts extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,28 +26,33 @@ public class Posts extends BaseTimeEntity {
     private String content;
 
     private String writer;
-
     private Integer view;
-
     private String location;
+    private LocalDateTime deadlineDate;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd`T`HH:mm:ss")
-    private Date deadlineDate;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_category_id")
+    private Category category;
 
-    @Builder
-    public Posts(String title, String content, String writer, Integer view, String location, Date deadlineDate) {
+
+    /*public Posts(String title, String content, String writer, Integer view, String location, LocalDateTime deadlineDate) {
         this.title = title;
         this.content = content;
         this.writer = writer;
         this.view = view;
         this.location = location;
         this.deadlineDate = deadlineDate;
-    }
+    }*/
 
-    public void update(String title, String content, String location, Date deadlineDate){
+    public void update(String title, String content, String location, LocalDateTime deadlineDate){
         this.title = title;
         this.content = content;
         this.location = location;
         this.deadlineDate = deadlineDate;
+    }
+
+    public void mappingCategory(Category category){
+        this.category = category;
+        category.mappingPost(this);
     }
 }

@@ -3,6 +3,7 @@ package snowz.moove.service.posts;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import snowz.moove.domain.category.CategoryRepository;
 import snowz.moove.domain.posts.Posts;
 import snowz.moove.domain.posts.PostsRepository;
 import snowz.moove.web.dto.PostsListResponseDto;
@@ -17,15 +18,28 @@ import java.util.stream.Collectors;
 @Service
 public class PostsService {
     private final PostsRepository postsRepository;
+    private final CategoryRepository categoryRepository;
 
     public List<Posts> getAllPosts(){
         return postsRepository.findAll();
     }
 
     @Transactional
-    public Long save(PostsSaveRequestDto requestDto){
-        return postsRepository.save(requestDto.toEntity())
-                .getId();
+    public PostsSaveRequestDto save(PostsSaveRequestDto requestDto){
+        Posts posts = Posts.builder()
+                .title(requestDto.getTitle())
+                .content(requestDto.getContent())
+                .writer(requestDto.getWriter())
+                .location(requestDto.getLocation())
+                .deadlineDate(requestDto.getDeadlineDate())
+                .category(categoryRepository.findByTitle(requestDto.getCategory()))
+                .build();
+
+        Posts savedPost = postsRepository.save(posts);
+
+        return PostsSaveRequestDto.builder()
+                .id(savedPost.getId())
+                .build();
     }
 
     @Transactional

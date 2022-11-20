@@ -10,7 +10,7 @@ import java.util.Date;
 @Getter
 public class PostsListResponseDto {
     private String title;
-    private Date deadlineDate;
+    private LocalDateTime deadlineDate;
 
     public PostsListResponseDto(Posts entity){
         this.title = entity.getTitle();
