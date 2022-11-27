@@ -3,6 +3,7 @@ package snowz.moove.service.posts;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import snowz.moove.domain.category.Category;
 import snowz.moove.domain.category.CategoryRepository;
 import snowz.moove.domain.posts.Posts;
 import snowz.moove.domain.posts.PostsRepository;
@@ -68,5 +69,11 @@ public class PostsService {
     @Transactional(readOnly = true)
     public List<PostsListResponseDto> findAllDesc(){
         return postsRepository.findAllDesc().stream().map(PostsListResponseDto::new).collect(Collectors.toList());
+    }
+
+    public List<PostsListResponseDto> findByCategory(String categoryTitle){
+        Category category = categoryRepository.findByTitle(categoryTitle);
+        Long id = category.getId();
+        return postsRepository.findByCategory(id).stream().map(PostsListResponseDto::new).collect(Collectors.toList());
     }
 }
