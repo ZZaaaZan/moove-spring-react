@@ -4,10 +4,13 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import snowz.moove.domain.BaseTimeEntity;
 import snowz.moove.domain.category.Category;
+import snowz.moove.domain.like.Like;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -33,6 +36,9 @@ public class Posts extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_category_id")
     private Category category;
+
+    @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL)
+    Set<Like> likes = new HashSet<>();
 
 
     /*public Posts(String title, String content, String writer, Integer view, String location, LocalDateTime deadlineDate) {
