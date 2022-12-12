@@ -10,14 +10,13 @@ import snowz.moove.domain.posts.PostsRepository;
 import snowz.moove.domain.user.User;
 import snowz.moove.domain.user.UserRepository;
 
-import java.util.Optional;
+import java.util.*;
 
 @RequiredArgsConstructor
 @Service
 public class LikeService {
 
     private final LikeRepository likeRepository;
-    private final UserRepository userRepository;
     private final PostsRepository postsRepository;
 
     public boolean isNotLike(User user, Posts posts){
@@ -34,8 +33,26 @@ public class LikeService {
         if(isNotLike(user, posts)){
             likeRepository.save(new Like(user, posts));
             return true;
-        }else{
-            return false;
         }
+        return false;
+    }
+
+    public void cancelLike(User user, Long postsId){
+        Posts posts = postsRepository.findById(postsId).orElseThrow();
+        Like like = likeRepository.findByUserAndPosts(user, posts).orElseThrow();
+
+        likeRepository.delete(like);
+    }
+
+    public List<String> count(User user, Long postsId){
+        Posts posts = postsRepository.findById(postsId).orElseThrow();
+        Integer postLikeCount = likeRepository.countByPosts(posts).orElse(0);
+
+        List<String> resultData = new ArrayList<>(Arrays.asList(String.valueOf(postLikeCount)));
+        if(Objects.nonNull(user)){
+            resultData.add(String.valueOf(isNotLike(user, posts)));
+            return resultData;
+        }
+        return resultData;
     }
 }
